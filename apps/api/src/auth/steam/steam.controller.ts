@@ -2,10 +2,11 @@ import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
 import type { Request, Response } from 'express';
 import { ConfigService } from '@nestjs/config';
 import { SteamAuthGuard } from './steam-auth.guard';
-import { AppUser, AuthService } from '../auth.service';
+import { AuthService } from '../auth.service';
+import { User } from '../../database/entities/user.entity';
 
 type ReturnRequest = Request & {
-  user: AppUser;
+  user: User;
 };
 
 @Controller('auth/steam')
@@ -21,17 +22,14 @@ export class SteamController {
     // passport-steam handles the redirect
   }
 
-  @Get('return')
+  @Get('callback')
   @UseGuards(SteamAuthGuard)
-  async steamReturn(@Req() req: ReturnRequest, @Res() res: Response) {
+  async steamCallback(@Req() req: ReturnRequest, @Res() res: Response) {
     const user = req.user as any;
     const token = await this.authService.issueJwt(user);
 
     const frontendUri = this.config.getOrThrow<string>('FRONTEND_URL');
     const nodeEnv = this.config.getOrThrow<string>('NODE_ENV');
-
-    console.log(user);
-    console.log(token);
 
     res.cookie('access_token', token, {
       httpOnly: true,

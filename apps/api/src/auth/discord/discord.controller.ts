@@ -1,11 +1,12 @@
 import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
 import type { Request, Response } from 'express';
-import { AppUser, AuthService } from '../auth.service';
+import { AuthService } from '../auth.service';
 import { ConfigService } from '@nestjs/config';
 import { DiscordAuthGuard } from './discord-auth.guard';
+import { User } from '../../database/entities/user.entity';
 
 type ReturnRequest = Request & {
-  user: AppUser;
+  user: User;
 };
 
 @Controller('auth/discord')
@@ -17,17 +18,15 @@ export class DiscordController {
 
   @Get('')
   @UseGuards(DiscordAuthGuard)
-  async steamLogin(): Promise<void> {
-    // passport-steam handles the redirect
+  async discordLogin(): Promise<void> {
+    // passport-discord handles the redirect
   }
 
-  @Get('return')
+  @Get('callback')
   @UseGuards(DiscordAuthGuard)
-  async steamReturn(@Req() req: ReturnRequest, @Res() res: Response) {
+  async discordCallback(@Req() req: ReturnRequest, @Res() res: Response) {
     const user = req.user as any;
     const token = await this.authService.issueJwt(user);
-
-    console.log(user, token);
 
     const frontendUri = this.config.getOrThrow<string>('FRONTEND_URL');
     const nodeEnv = this.config.getOrThrow<string>('NODE_ENV');

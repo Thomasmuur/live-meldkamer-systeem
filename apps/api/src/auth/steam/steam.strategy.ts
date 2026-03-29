@@ -13,7 +13,7 @@ export class SteamStrategy extends PassportStrategy(Strategy, 'steam') {
     super({
       returnURL: config.getOrThrow<string>('STEAM_RETURN_URL'),
       realm: config.getOrThrow<string>('STEAM_REALM'),
-      apiKey: 'CF811F135349B6BE9390214627A86720',
+      apiKey: config.getOrThrow<string>('STEAM_API_KEY'),
     });
   }
 
