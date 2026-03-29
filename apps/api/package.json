@@ -1,0 +1,48 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nest start --watch",
+    "build": "nest build",
+    "start": "nest start",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\""
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.1.11",
+    "@nestjs/config": "^4.0.3",
+    "@nestjs/core": "^11.1.11",
+    "@nestjs/jwt": "^11.0.2",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^11.1.11",
+    "escape-html": "^1.0.3",
+    "openid": "^2.0.15",
+    "passport": "^0.7.0",
+    "passport-discord": "^0.1.4",
+    "passport-steam": "^1.0.18",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "service": "^0.1.4"
+  },
+  "devDependencies": {
+    "@lms/eslint-config": "*",
+    "@lms/typescript-config": "*",
+    "@nestjs/cli": "^11.0.14",
+    "@nestjs/schematics": "^11.0.9",
+    "@nestjs/testing": "^11.1.11",
+    "@types/express": "^4.17.25",
+    "@types/node": "^22.19.3",
+    "@types/passport-discord": "^0.1.15",
+    "@types/passport-steam": "^1.0.6",
+    "@types/supertest": "^6.0.3",
+    "eslint": "^10.1.0",
+    "source-map-support": "^0.5.21",
+    "supertest": "^7.2.2",
+    "ts-loader": "^9.5.4",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "5.5.4"
+  }
+}

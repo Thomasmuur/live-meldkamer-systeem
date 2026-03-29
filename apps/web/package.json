@@ -10,12 +10,12 @@
     "lint": "eslint \"src/**/*.ts\""
   },
   "dependencies": {
-    "@repo/ui": "*"
+    "@lms/ui": "*"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
-    "eslint": "^8.57.0",
+    "@lms/eslint-config": "*",
+    "@lms/typescript-config": "*",
+    "eslint": "^10.1.0",
     "typescript": "5.5.4",
     "vite": "^5.1.4"
   }
