@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseConfiguration } from './configuration/database';
+import { IncidentModule } from './incident/incident.module';
 
 @Module({
   imports: [
@@ -15,6 +16,8 @@ import { DatabaseConfiguration } from './configuration/database';
     }),
 
     DatabaseConfiguration.getRootImport(),
+
+    IncidentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
